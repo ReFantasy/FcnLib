@@ -18,10 +18,10 @@ void TestThreadPool()
 	std::thread thd1(
 		[&pool]
 	{
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 100; i++)
 		{
 			auto thid = this_thread::get_id();
-			pool.AddTask([thid] {cout << "同步层线程1的线程ID" << thid << endl; });
+			pool.AddTask([thid] {cout << "layer1 thread ID" << thid << endl; });
 		}
 	}
 	);
@@ -29,10 +29,10 @@ void TestThreadPool()
 	std::thread thd2(
 		[&pool]
 	{
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 100; i++)
 		{
 			auto thid = this_thread::get_id();
-			pool.AddTask([thid] {cout << "同步层线程2的线程ID" << thid << endl; });
+			pool.AddTask([thid] {cout << "layer2 thread ID" << thid << endl; });
 		}
 	}
 	);
