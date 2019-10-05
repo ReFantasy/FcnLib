@@ -14,9 +14,13 @@ Add_Definitions(-DUNICODE -D_UNICODE)
 ADD_SUBDIRECTORY(ThreadPool) 
 
 
+include_directories("${PROJECT_SOURCE_DIR}/ThreadPool")
 
 AUX_SOURCE_DIRECTORY(. SRC_LIST)
 ADD_EXECUTABLE(gl ${SRC_LIST})
+
+# 添加链接库
+target_link_libraries(gl thread_pool)
 
 
 
