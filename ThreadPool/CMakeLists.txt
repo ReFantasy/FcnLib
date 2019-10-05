@@ -1,0 +1,8 @@
+AUX_SOURCE_DIRECTORY(. THREAD_POOL)
+ADD_LIBRARY ( thread_pool ${THREAD_POOL})
+
+
+
+
+
+
