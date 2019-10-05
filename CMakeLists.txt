@@ -12,9 +12,10 @@ Add_Definitions(-DUNICODE -D_UNICODE)
 
 # 子目录
 ADD_SUBDIRECTORY(ThreadPool) 
+ADD_SUBDIRECTORY(other) 
 
 
-include_directories("${PROJECT_SOURCE_DIR}/ThreadPool")
+#include_directories("${PROJECT_SOURCE_DIR}/ThreadPool")
 
 AUX_SOURCE_DIRECTORY(. SRC_LIST)
 ADD_EXECUTABLE(gl ${SRC_LIST})

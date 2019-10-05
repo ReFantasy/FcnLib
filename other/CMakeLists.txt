@@ -1,0 +1,8 @@
+AUX_SOURCE_DIRECTORY(. OTHER)
+ADD_LIBRARY ( other ${OTHER})
+
+
+
+
+
+
