@@ -3,7 +3,9 @@
 #include "SerialPort/serial_port.h"
 using namespace std;
 
-//void TestThreadPool();
+#ifdef _WIN32
+void TestThreadPool();
+#endif
 
 int main()
 {	
@@ -14,34 +16,36 @@ int main()
 	return 0;
 }
 
-//void TestThreadPool()
-//{
-//	ThreadPool pool;
-//
-//	std::thread thd1(
-//		[&pool]
-//	{
-//		for (int i = 0; i < 100; i++)
-//		{
-//			auto thid = this_thread::get_id();
-//			pool.AddTask([thid] {cout << "layer1 thread ID" << thid << endl; });
-//		}
-//	}
-//	);
-//
-//	std::thread thd2(
-//		[&pool]
-//	{
-//		for (int i = 0; i < 100; i++)
-//		{
-//			auto thid = this_thread::get_id();
-//			pool.AddTask([thid] {cout << "layer2 thread ID" << thid << endl; });
-//		}
-//	}
-//	);
-//
-//	this_thread::sleep_for(std::chrono::seconds(2));
-//	pool.Stop();
-//	thd1.join();
-//	thd2.join();
-//}
+#ifdef _WIN32
+void TestThreadPool()
+{
+	ThreadPool pool;
+
+	std::thread thd1(
+		[&pool]
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			auto thid = this_thread::get_id();
+			pool.AddTask([thid] {cout << "layer1 thread ID" << thid << endl; });
+		}
+	}
+	);
+
+	std::thread thd2(
+		[&pool]
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			auto thid = this_thread::get_id();
+			pool.AddTask([thid] {cout << "layer2 thread ID" << thid << endl; });
+		}
+	}
+	);
+
+	this_thread::sleep_for(std::chrono::seconds(2));
+	pool.Stop();
+	thd1.join();
+	thd2.join();
+}
+#endif
