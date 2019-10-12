@@ -10,9 +10,9 @@ void TestThreadPool();
 int main()
 {	
 	
-#ifdef _WIN32
+
 	cout << "hello" << endl;
-#endif
+
 	return 0;
 }
 
