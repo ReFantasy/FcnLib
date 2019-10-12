@@ -1,13 +1,16 @@
 #include <iostream>
 #include "ThreadPool/thread_pool.h"
+#include "SerialPort/serial_port.h"
 using namespace std;
 
 void TestThreadPool();
 
 int main()
 {	
-	TestThreadPool();
-
+	
+#ifdef _WIN32
+	cout << "hello" << endl;
+#endif
 	return 0;
 }
 
